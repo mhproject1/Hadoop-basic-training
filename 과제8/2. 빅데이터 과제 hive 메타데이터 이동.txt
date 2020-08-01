@@ -1,0 +1,29 @@
+chosun@chosun-VirtualBox:~$ 
+chosun@chosun-VirtualBox:~$ cd 다운로드/wk13
+chosun@chosun-VirtualBox:~/다운로드/wk13$ ls
+1987.csv                2019.05.27.Ch13.pdf  2019.06.03.ch17_hiveex.pdf  2019.6.5.Hive_databases.pdf  carriers_after.csv   carriers_new.csv
+2019.05.22.ch13.ex.pdf  2019.05.27.ch17.pdf  2019.06.05.ch18_sqoop.pdf   airports_new.csv             carriers_before.csv  ch13_17_18_ex.pdf
+chosun@chosun-VirtualBox:~/다운로드/wk13$ 
+chosun@chosun-VirtualBox:~/다운로드/wk13$ cat carriers_after.csv | head -5
+02Q,Titan Airways
+04Q,Tradewind Aviation
+05Q,Comlux Aviation, AG
+06Q,Master Top Linhas Aereas Ltd.
+07Q,Flair Airlines Ltd.
+chosun@chosun-VirtualBox:~/다운로드/wk13$ 
+chosun@chosun-VirtualBox:~/다운로드/wk13$ mv carriers_after.csv homework_carriers.csv
+chosun@chosun-VirtualBox:~/다운로드/wk13$ 
+chosun@chosun-VirtualBox:~/다운로드/wk13$ l
+1987.csv                2019.05.27.Ch13.pdf  2019.06.03.ch17_hiveex.pdf  2019.6.5.Hive_databases.pdf  carriers_before.csv  ch13_17_18_ex.pdf
+2019.05.22.ch13.ex.pdf  2019.05.27.ch17.pdf  2019.06.05.ch18_sqoop.pdf   airports_new.csv             carriers_new.csv     homework_carriers.csv
+chosun@chosun-VirtualBox:~/다운로드/wk13$ 
+chosun@chosun-VirtualBox:~/다운로드/wk13$ mv homework_carriers.csv ../../hive
+chosun@chosun-VirtualBox:~/다운로드/wk13$ mv 1987.csv ../../hive
+chosun@chosun-VirtualBox:~/다운로드/wk13$ 
+chosun@chosun-VirtualBox:~/다운로드/wk13$ cd ../../hive
+chosun@chosun-VirtualBox:~/hive$ l
+1987.csv  NOTICE             bin/                      conf/      hcatalog/              jdbc/  scripts/
+LICENSE   RELEASE_NOTES.txt  binary-package-licenses/  examples/  homework_carriers.csv  lib/
+chosun@chosun-VirtualBox:~/hive$ 
+chosun@chosun-VirtualBox:~/hive$ 
+

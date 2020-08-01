@@ -1,0 +1,521 @@
+chosun@chosun-VirtualBox:~$ ./hive/bin/hive
+/home/chosun/hive/conf/hive-env.sh: 줄 49: HADOOP: 명령어를 찾을 수 없음
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/chosun/apache-hive-3.1.1-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Hive Session ID = 4502463e-b263-4dbf-b0f9-9734e74c31fc
+
+Logging initialized using configuration in jar:file:/home/chosun/apache-hive-3.1.1-bin/lib/hive-common-3.1.1.jar!/hive-log4j2.properties Async: true
+Hive Session ID = 61f5bb59-0cdd-4229-abe0-33da3a633054
+Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+hive> 
+    > CREATE TABLE airline_delay(Year INT, Month INT,
+    > DayofMonth INT, DayOfWeek INT,
+    > DepTime INT, CRSDepTime INT,
+    > ArrTime INT, CRSArrTime INT,
+    > UniqueCarrier STRING, FlightNum INT,
+    > TailNum STRING, ActualElapsedTime INT,
+    > CRSElapsedTime INT, AirTime INT,
+    > ArrDelay INT, DepDelay INT,
+    > Origin STRING, Dest STRING,
+    > Distance INT, TaxiIn INT,
+    > TaxiOut INT, Cancelled INT,
+    > CancellationCode STRING COMMENT 'A = carrier, B = weather, C = NAS, D=security' ,
+    > Diverted INT COMMENT '1 = yes, 0 = no',
+    > CarrierDelay STRING, WeatherDelay STRING,
+    > NASDelay STRING, SecurityDelay STRING,
+    > LateAircraftDelay STRING)
+    > Partitioned by (DelayYear INT)
+    > ROW FORMAT DELIMITED
+    > FIELDS TERMINATED BY ','
+    > LINES TERMINATED BY '\n'
+    > STORED AS TEXTFILE;
+OK
+Time taken: 0.911 seconds
+hive> hive> 
+    > describe airline_delay;
+OK
+col_name	data_type	comment
+year                	int                 	                    
+month               	int                 	                    
+dayofmonth          	int                 	                    
+dayofweek           	int                 	                    
+deptime             	int                 	                    
+crsdeptime          	int                 	                    
+arrtime             	int                 	                    
+crsarrtime          	int                 	                    
+uniquecarrier       	string              	                    
+flightnum           	int                 	                    
+tailnum             	string              	                    
+actualelapsedtime   	int                 	                    
+crselapsedtime      	int                 	                    
+airtime             	int                 	                    
+arrdelay            	int                 	                    
+depdelay            	int                 	                    
+origin              	string              	                    
+dest                	string              	                    
+distance            	int                 	                    
+taxiin              	int                 	                    
+taxiout             	int                 	                    
+cancelled           	int                 	                    
+cancellationcode    	string              	A = carrier, B = weather, C = NAS, D=security
+diverted            	int                 	1 = yes, 0 = no     
+carrierdelay        	string              	                    
+weatherdelay        	string              	                    
+nasdelay            	string              	                    
+securitydelay       	string              	                    
+lateaircraftdelay   	string              	                    
+delayyear           	int                 	                    
+	 	 
+# Partition Information	 	 
+# col_name            	data_type           	comment             
+delayyear           	int                 	                    
+Time taken: 0.49 seconds, Fetched: 34 row(s)
+hive> 
+    > load data local inpath '/home/chosun/hive/1987.csv'
+    > overwrite into table airline_delay
+    > partition (delayYear='1987');
+Loading data to table default.airline_delay partition (delayyear=1987)
+OK
+Time taken: 2.281 seconds
+hive> 
+    > select year, month, deptime, arrtime, uniquecarrier, flightnum
+    > from airline_delay
+    > where delayYear = '1987'
+    > limit 10;
+OK
+year	month	deptime	arrtime	uniquecarrier	flightnum
+NULL	NULL	NULL	NULL	UniqueCarrier	NULL
+1987	10	741	912	PS	1451
+1987	10	729	903	PS	1451
+1987	10	741	918	PS	1451
+1987	10	729	847	PS	1451
+1987	10	749	922	PS	1451
+1987	10	728	848	PS	1451
+1987	10	728	852	PS	1451
+1987	10	731	902	PS	1451
+1987	10	744	908	PS	1451
+Time taken: 2.141 seconds, Fetched: 10 row(s)
+hive> 
+    > 
+    > select year, month, count(*) as airline_delay_count
+    > from airline_delay
+    > where delayYear = '1987' and arrdelay > 0 group by year, month;
+Query ID = chosun_20190605230829_c51b5e9d-e729-4b45-8214-12739513044b
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1559739087271_0001, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0001/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0001
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2019-06-05 23:08:40,311 Stage-1 map = 0%,  reduce = 0%
+2019-06-05 23:08:50,041 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 3.42 sec
+2019-06-05 23:08:55,213 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 5.43 sec
+MapReduce Total cumulative CPU time: 5 seconds 430 msec
+Ended Job = job_1559739087271_0001
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 5.43 sec   HDFS Read: 127183633 HDFS Write: 168 SUCCESS
+Total MapReduce CPU Time Spent: 5 seconds 430 msec
+OK
+year	month	airline_delay_count
+1987	10	265658
+1987	11	255127
+1987	12	287408
+Time taken: 28.249 seconds, Fetched: 3 row(s)
+hive> 
+    > select year, month, avg(arrdelay) as avg_airline_delay_time, avg(depdelay) as avg_departure_delay_time
+    > from airline_delay
+    > where delayYear = '1987' and arrdelay > 0 group by year, month;
+Query ID = chosun_20190605231105_8eb6e934-436f-4d61-b1cc-6b19fb0253f9
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1559739087271_0002, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0002/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0002
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2019-06-05 23:11:11,959 Stage-1 map = 0%,  reduce = 0%
+2019-06-05 23:11:17,518 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 3.72 sec
+2019-06-05 23:11:24,814 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 6.15 sec
+MapReduce Total cumulative CPU time: 6 seconds 150 msec
+Ended Job = job_1559739087271_0002
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 6.15 sec   HDFS Read: 127185172 HDFS Write: 260 SUCCESS
+Total MapReduce CPU Time Spent: 6 seconds 150 msec
+OK
+year	month	avg_airline_delay_time	avg_departure_delay_time
+1987	10	14.154563386007574	8.187481649338624
+1987	11	17.786212356982993	11.327370290090817
+1987	12	23.840985637143017	17.536394254857207
+Time taken: 20.412 seconds, Fetched: 3 row(s)
+hive> 
+    > create table carrier_code(Code STRING, Description STRING)
+    > row format delimited
+    > fields terminated by ','
+    > lines terminated by '\n'
+    > stored as textfile;
+OK
+Time taken: 0.051 seconds
+hive> 
+    > show tables;
+OK
+tab_name
+airline_delay
+carrier_code
+Time taken: 0.006 seconds, Fetched: 2 row(s)
+hive> 
+    > describe carrier_code;
+OK
+col_name	data_type	comment
+code                	string              	                    
+description         	string              	                    
+Time taken: 0.016 seconds, Fetched: 2 row(s)
+hive> 
+    > load data local inpath '/home/chosun/homework_carriers.csv'
+    > overwrite into table carrier_code;
+FAILED: SemanticException Line 1:23 Invalid path ''/home/chosun/homework_carriers.csv'': No files matching path file:/home/chosun/homework_carriers.csv
+hive> 
+    > load data local inpath '/home/chosun/hive/homework_carriers.csv'
+    > overwrite into table carrier_code;
+Loading data to table default.carrier_code
+OK
+Time taken: 0.103 seconds
+hive> 
+    > select * from carrier_code limit 10;
+OK
+carrier_code.code	carrier_code.description
+02Q	Titan Airways
+04Q	Tradewind Aviation
+05Q	Comlux Aviation
+06Q	Master Top Linhas Aereas Ltd.
+07Q	Flair Airlines Ltd.
+09Q	Swift Air
+0BQ	DCA
+0CQ	ACM AIR CHARTER GmbH
+0FQ	Maine Aviation Aircraft Charter
+0GQ	Inter Island Airways
+Time taken: 0.062 seconds, Fetched: 10 row(s)
+hive> 
+    > select A.year,A.uniquecarrier,B.description,count(*)
+    > from airline_delay A join carrier_code B on (A.uniquecarrier = B.code)
+    > where a.arrdelay > 0
+    > group by A.year,A.uniquecarrier,B.description;
+Query ID = chosun_20190605231415_e3184da4-0f96-481b-9d7f-f969926b0478
+Total jobs = 1
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+2019-06-05 23:14:20	Starting to launch local task to process map join;	maximum memory = 477626368
+2019-06-05 23:14:21	Uploaded 1 File to: file:/tmp/chosun/4502463e-b263-4dbf-b0f9-9734e74c31fc/hive_2019-06-05_23-14-15_638_3800843140763170630-1/-local-10005/HashTable-Stage-2/MapJoin-mapfile01--.hashtable (63412 bytes)
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1559739087271_0003, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0003/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0003
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2019-06-05 23:14:27,417 Stage-2 map = 0%,  reduce = 0%
+2019-06-05 23:14:33,928 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 4.44 sec
+2019-06-05 23:14:40,167 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 6.27 sec
+MapReduce Total cumulative CPU time: 6 seconds 270 msec
+Ended Job = job_1559739087271_0003
+MapReduce Jobs Launched: 
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 6.27 sec   HDFS Read: 127188530 HDFS Write: 911 SUCCESS
+Total MapReduce CPU Time Spent: 6 seconds 270 msec
+OK
+a.year	a.uniquecarrier	b.description	_c3
+1987	AA	American Airlines Inc.	83421
+1987	AS	Alaska Airlines Inc.	15316
+1987	CO	Continental Air Lines Inc.	62300
+1987	DL	Delta Air Lines Inc.	142189
+1987	EA	Eastern Air Lines Inc.	60018
+1987	HP	America West Airlines Inc. (Merged with US Airways 9/05. Stopped reporting 10/07.)	32585
+1987	NW	Northwest Airlines Inc.	74688
+1987	PA (1)	Pan American World Airways (1)	9264
+1987	PI	Piedmont Aviation Inc.	80570
+1987	PS	Pacific Southwest Airlines	31140
+1987	TW	Trans World Airways LLC	42510
+1987	UA	United Air Lines Inc.	81104
+1987	US	US Airways Inc. (Merged with America West 9/05. Reporting for both starting 10/07.)	63959
+1987	WN	Southwest Airlines Co.	29129
+Time taken: 25.626 seconds, Fetched: 14 row(s)
+hive> 
+hive> 
+    > CREATE TABLE airport_code(Iata string, Airport STRING, City STRING, State STRING, Country STRING,
+    > Lat double, Longitude double)
+    > ROW FORMAT DELIMITED
+    > FIELDS TERMINATED BY ','
+    > LINES TERMINATED BY '\n'
+    > STORED AS TEXTFILE;
+OK
+Time taken: 0.03 seconds
+hive> 
+    > LOAD DATA LOCAL INPATH '/home/chosun/hive/homework_airport.csv'
+    > OVERWRITE INTO TABLE airport_code;
+Loading data to table default.airport_code
+OK
+Time taken: 0.092 seconds
+hive> 
+    > select * from airport_code limit 10;
+OK
+airport_code.iata	airport_code.airport	airport_code.city	airport_code.state	airport_code.country	airport_code.lat	airport_code.longitude
+00M	Thigpen 	Bay Springs	MS	USA	31.95376472	-89.23450472
+00R	Livingston Municipal	Livingston	TX	USA	30.68586111	-95.01792778
+00V	Meadow Lake	Colorado Springs	CO	USA	38.94574889	-104.5698933
+01G	Perry-Warsaw	Perry	NY	USA	42.74134667	-78.05208056
+01J	Hilliard Airpark	Hilliard	FL	USA	30.6880125	-81.90594389
+01M	Tishomingo County	Belmont	MS	USA	34.49166667	-88.20111111
+02A	Gragg-Wade 	Clanton	AL	USA	32.85048667	-86.61145333
+02C	Capitol	Brookfield	WI	USA	43.08751	-88.17786917
+02G	Columbiana County	East Liverpool	OH	USA	40.67331278	-80.64140639
+03D	Memphis Memorial	Memphis	MO	USA	40.44725889	-92.22696056
+Time taken: 0.057 seconds, Fetched: 10 row(s)
+hive> 
+    > SELECT A.Year, A.Origin, B.Airport, A.dest, C.Airport, Count(*)
+    > FROM airline_delay A
+    > join airport_code B on (A.origin = B.Iata)
+    > join airport_code C on (A.dest = C.Iata)
+    > where a.arrdelay > 0
+    > group by A.year,A.origin,B.airport,A.dest,C.airport;
+No Stats for default@airline_delay, Columns: arrdelay, year, origin, dest
+No Stats for default@airport_code, Columns: iata, airport
+No Stats for default@airport_code, Columns: iata, airport
+Query ID = chosun_20190605234454_c0a42667-4377-4b5d-85b5-3e823687acb3
+Total jobs = 1
+SLF4J: Found binding in [jar:file:/home/chosun/apache-hive-3.1.1-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+2019-06-05 23:45:01	Starting to launch local task to process map join;	maximum memory = 477626368
+
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1559739087271_0004, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0004/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0004
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+2019-06-05 23:45:10,596 Stage-3 map = 0%,  reduce = 0%
+2019-06-05 23:45:20,020 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 6.18 sec
+2019-06-05 23:45:26,261 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 8.52 sec
+MapReduce Total cumulative CPU time: 8 seconds 520 msec
+Ended Job = job_1559739087271_0004
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 8.52 sec   HDFS Read: 127193257 HDFS Write: 268838 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 520 msec
+OK
+a.year	a.origin	b.airport	a.dest	c.airport	_c5
+1987	ABE	Lehigh Valley International	ATL	William B Hartsfield-Atlanta Intl	91
+1987	ABE	Lehigh Valley International	AVP	Wilkes-Barre/Scranton Intl	60
+1987	ABE	Lehigh Valley International	DTW	Detroit Metropolitan-Wayne County	142
+
+...
+
+1987	YAP	Yap International	ROR	Babelthoup/Koror	13
+1987	YKM	Yakima Air Terminal	PSC	Tri-Cities	102
+1987	YUM	Yuma MCAS-Yuma International	LAS	McCarran International	6
+1987	YUM	Yuma MCAS-Yuma International	PHX	Phoenix Sky Harbor International	234
+Time taken: 32.668 seconds, Fetched: 3442 row(s)
+hive> 
+    > 
+    > CREATE TABLE carrier_code2(Code STRING, Description STRING)
+    > ROW FORMAT DELIMITED
+    > FIELDS TERMINATED BY ','
+    > LINES TERMINATED BY '\n'
+    > STORED AS TEXTFILE;
+OK
+Time taken: 0.098 seconds
+hive> 
+    > LOAD DATA LOCAL INPATH '/home/chosun/hive/homework_carriers2.csv'
+    > OVERWRITE INTO TABLE carrier_code2;
+Loading data to table default.carrier_code2
+OK
+Time taken: 0.137 seconds
+hive> 
+    > SELECT A.Year, A.UniqueCarrier, B.Code, B.Description
+    > FROM airline_delay A
+    > LEFT OUTER JOIN carrier_code2 B ON (A.UniqueCarrier = B.Code)
+    > WHERE A.UniqueCarrier = 'WN'
+    > LIMIT 10;
+Warning: Map Join MAPJOIN[14][bigTable=?] in task 'Stage-3:MAPRED' is a cross product
+Query ID = chosun_20190605235117_2f87d5a0-c6b3-445f-b0a7-56efa9cfdee0
+Total jobs = 1
+SLF4J: Found binding in [jar:file:/home/chosun/apache-hive-3.1.1-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+2019-06-05 23:51:23	Uploaded 1 File to: file:/tmp/chosun/4502463e-b263-4dbf-b0f9-9734e74c31fc/hive_2019-06-05_23-51-17_137_9045315568461493482-1/-local-10004/HashTable-Stage-3/MapJoin-mapfile31--.hashtable (260 bytes)
+2019-06-05 23:51:23	End of local task; Time Taken: 1.408 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1559739087271_0005, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0005/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0005
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2019-06-05 23:51:30,531 Stage-3 map = 0%,  reduce = 0%
+2019-06-05 23:51:35,773 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 2.48 sec
+MapReduce Total cumulative CPU time: 2 seconds 480 msec
+Ended Job = job_1559739087271_0005
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 2.48 sec   HDFS Read: 9560534 HDFS Write: 347 SUCCESS
+Total MapReduce CPU Time Spent: 2 seconds 480 msec
+OK
+a.year	a.uniquecarrier	b.code	b.description
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+1987	WN	NULL	NULL
+Time taken: 19.714 seconds, Fetched: 10 row(s)
+hive> 
+    > CREATE TABLE airline_delay2(Year INT, Month INT, UniqueCarrier STRING, ArrDelay INT, DepDelay INT)
+    > CLUSTERED BY (UniqueCarrier) INTO 20 BUCKETS;
+OK
+Time taken: 0.072 seconds
+hive> 
+    > INSERT OVERWRITE TABLE airline_delay2
+    > SELECT Year, Month, UniqueCarrier, ArrDelay, DepDelay
+    > FROM airline_delay
+    > WHERE delayYear = 1987;
+Query ID = chosun_20190605235205_96054016-6449-420a-92c5-d22f1157d461
+Total jobs = 2
+Launching Job 1 out of 2
+Number of reduce tasks determined at compile time: 20
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1559739087271_0006, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0006/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0006
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 20
+2019-06-05 23:52:11,130 Stage-1 map = 0%,  reduce = 0%
+2019-06-05 23:52:18,785 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 5.19 sec
+2019-06-05 23:52:30,498 Stage-1 map = 100%,  reduce = 5%, Cumulative CPU 7.1 sec
+2019-06-05 23:52:31,556 Stage-1 map = 100%,  reduce = 10%, Cumulative CPU 10.6 sec
+2019-06-05 23:52:32,601 Stage-1 map = 100%,  reduce = 15%, Cumulative CPU 12.07 sec
+2019-06-05 23:52:41,983 Stage-1 map = 100%,  reduce = 30%, Cumulative CPU 20.92 sec
+2019-06-05 23:52:48,891 Stage-1 map = 100%,  reduce = 33%, Cumulative CPU 23.39 sec
+2019-06-05 23:54:01,134 Stage-1 map = 100%,  reduce = 33%, Cumulative CPU 23.39 sec
+2019-06-05 23:54:02,910 Stage-1 map = 100%,  reduce = 32%, Cumulative CPU 41.74 sec
+2019-06-05 23:54:04,149 Stage-1 map = 100%,  reduce = 40%, Cumulative CPU 52.51 sec
+2019-06-05 23:54:10,989 Stage-1 map = 100%,  reduce = 45%, Cumulative CPU 54.45 sec
+2019-06-05 23:54:12,033 Stage-1 map = 100%,  reduce = 55%, Cumulative CPU 59.82 sec
+2019-06-05 23:54:13,101 Stage-1 map = 100%,  reduce = 60%, Cumulative CPU 62.35 sec
+2019-06-05 23:54:14,137 Stage-1 map = 100%,  reduce = 65%, Cumulative CPU 63.87 sec
+2019-06-05 23:54:15,249 Stage-1 map = 100%,  reduce = 70%, Cumulative CPU 66.48 sec
+2019-06-05 23:54:23,517 Stage-1 map = 100%,  reduce = 80%, Cumulative CPU 72.5 sec
+2019-06-05 23:54:27,205 Stage-1 map = 100%,  reduce = 92%, Cumulative CPU 78.47 sec
+2019-06-05 23:54:29,316 Stage-1 map = 100%,  reduce = 97%, Cumulative CPU 81.47 sec
+2019-06-05 23:54:30,359 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 84.4 sec
+MapReduce Total cumulative CPU time: 1 minutes 24 seconds 400 msec
+Ended Job = job_1559739087271_0006
+Loading data to table default.airline_delay2
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1559739087271_0007, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0007/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0007
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 1
+2019-06-05 23:54:41,057 Stage-3 map = 0%,  reduce = 0%
+2019-06-05 23:54:45,243 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 1.54 sec
+2019-06-05 23:54:50,415 Stage-3 map = 100%,  reduce = 100%, Cumulative CPU 3.14 sec
+MapReduce Total cumulative CPU time: 3 seconds 140 msec
+Ended Job = job_1559739087271_0007
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 20   Cumulative CPU: 84.4 sec   HDFS Read: 127381550 HDFS Write: 21304923 SUCCESS
+Stage-Stage-3: Map: 1  Reduce: 1   Cumulative CPU: 3.14 sec   HDFS Read: 43417 HDFS Write: 2997 SUCCESS
+Total MapReduce CPU Time Spent: 1 minutes 27 seconds 540 msec
+OK
+year	month	uniquecarrier	arrdelay	depdelay
+Time taken: 166.565 seconds
+hive> 
+    > dfs -ls /user/hive/warehouse/airline_delay2;
+Found 20 items
+-rw-r--r--   1 chosun supergroup    5212308 2019-06-05 23:52 /user/hive/warehouse/airline_delay2/000000_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:52 /user/hive/warehouse/airline_delay2/000001_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:52 /user/hive/warehouse/airline_delay2/000002_0
+-rw-r--r--   1 chosun supergroup     677199 2019-06-05 23:52 /user/hive/warehouse/airline_delay2/000003_0
+-rw-r--r--   1 chosun supergroup    4699869 2019-06-05 23:52 /user/hive/warehouse/airline_delay2/000004_0
+-rw-r--r--   1 chosun supergroup    1735187 2019-06-05 23:52 /user/hive/warehouse/airline_delay2/000005_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000006_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000007_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000008_0
+-rw-r--r--   1 chosun supergroup     336860 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000009_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000010_0
+-rw-r--r--   1 chosun supergroup    1128072 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000011_0
+-rw-r--r--   1 chosun supergroup     719243 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000012_0
+-rw-r--r--   1 chosun supergroup    1881748 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000013_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000014_0
+-rw-r--r--   1 chosun supergroup     994797 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000015_0
+-rw-r--r--   1 chosun supergroup    2018623 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000016_0
+-rw-r--r--   1 chosun supergroup          0 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000017_0
+-rw-r--r--   1 chosun supergroup    1874288 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000018_0
+-rw-r--r--   1 chosun supergroup         26 2019-06-05 23:54 /user/hive/warehouse/airline_delay2/000019_0
+hive> 
+    > SELECT UniqueCarrier, COUNT(*)
+    > FROM airline_delay2
+    > TABLESAMPLE(BUCKET 1 OUT OF 20)
+    > GROUP BY UniqueCarrier;
+Query ID = chosun_20190605235547_a7eafa64-d398-4f1a-9172-5d36f3a59443
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1559739087271_0008, Tracking URL = http://0.0.0.0:8089/proxy/application_1559739087271_0008/
+Kill Command = /home/chosun/hadoop-2.7.2/bin/mapred job  -kill job_1559739087271_0008
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2019-06-05 23:55:51,384 Stage-1 map = 0%,  reduce = 0%
+2019-06-05 23:55:57,596 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 3.64 sec
+2019-06-05 23:56:01,738 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 5.42 sec
+MapReduce Total cumulative CPU time: 5 seconds 420 msec
+Ended Job = job_1559739087271_0008
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 5.42 sec   HDFS Read: 21294965 HDFS Write: 87 SUCCESS
+Total MapReduce CPU Time Spent: 5 seconds 420 msec
+OK
+uniquecarrier	_c1
+Time taken: 15.191 seconds
+hive> 
+
+

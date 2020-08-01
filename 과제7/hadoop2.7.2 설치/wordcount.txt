@@ -1,0 +1,306 @@
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ start-all.sh
+This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Starting namenodes on [localhost]
+localhost: starting namenode, logging to /home/chosun/hadoop-2.7.2/logs/hadoop-chosun-namenode-chosun-VirtualBox.out
+localhost: WARNING: An illegal reflective access operation has occurred
+localhost: WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+localhost: WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+localhost: WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+localhost: WARNING: All illegal access operations will be denied in a future release
+localhost: starting datanode, logging to /home/chosun/hadoop-2.7.2/logs/hadoop-chosun-datanode-chosun-VirtualBox.out
+localhost: WARNING: An illegal reflective access operation has occurred
+localhost: WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+localhost: WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+localhost: WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+localhost: WARNING: All illegal access operations will be denied in a future release
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /home/chosun/hadoop-2.7.2/logs/hadoop-chosun-secondarynamenode-chosun-VirtualBox.out
+0.0.0.0: WARNING: An illegal reflective access operation has occurred
+0.0.0.0: WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+0.0.0.0: WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+0.0.0.0: WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+0.0.0.0: WARNING: All illegal access operations will be denied in a future release
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+starting yarn daemons
+starting resourcemanager, logging to /home/chosun/hadoop-2.7.2/logs/yarn-chosun-resourcemanager-chosun-VirtualBox.out
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+localhost: starting nodemanager, logging to /home/chosun/hadoop-2.7.2/logs/yarn-chosun-nodemanager-chosun-VirtualBox.out
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ jps
+18992 NameNode
+19907 NodeManager
+20116 Jps
+19189 DataNode
+19430 SecondaryNameNode
+19615 ResourceManager
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ mr-jobhistory-daemon.sh start historyserver
+starting historyserver, logging to /home/chosun/hadoop-2.7.2/logs/mapred-chosun-historyserver-chosun-VirtualBox.out
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ jps
+18992 NameNode
+20208 Jps
+20162 JobHistoryServer
+19907 NodeManager
+19189 DataNode
+19430 SecondaryNameNode
+19615 ResourceManager
+chosun@chosun-VirtualBox:~/hadoop2$ yarn-daemon.sh start proxyserver
+starting proxyserver, logging to /home/chosun/hadoop-2.7.2/logs/yarn-chosun-proxyserver-chosun-VirtualBox.out
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ jps
+18992 NameNode
+20162 JobHistoryServer
+19907 NodeManager
+19189 DataNode
+19430 SecondaryNameNode
+20333 Jps
+20285 WebAppProxyServer
+19615 ResourceManager
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ stop-yarn.sh
+stopping yarn daemons
+stopping resourcemanager
+localhost: stopping nodemanager
+stopping proxyserver
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ jps
+18992 NameNode
+20546 Jps
+20162 JobHistoryServer
+19189 DataNode
+19430 SecondaryNameNode
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ stop-dfs.sh
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Stopping namenodes on [localhost]
+localhost: stopping namenode
+localhost: stopping datanode
+Stopping secondary namenodes [0.0.0.0]
+0.0.0.0: stopping secondarynamenode
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ jps
+20162 JobHistoryServer
+21100 Jps
+chosun@chosun-VirtualBox:~/hadoop2$ mr-jobhistory-daemon.sh stop historyserver
+stopping historyserver
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ jps
+21145 Jps
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ start-all.sh
+This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Starting namenodes on [localhost]
+localhost: starting namenode, logging to /home/chosun/hadoop-2.7.2/logs/hadoop-chosun-namenode-chosun-VirtualBox.out
+localhost: WARNING: An illegal reflective access operation has occurred
+localhost: WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+localhost: WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+localhost: WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+localhost: WARNING: All illegal access operations will be denied in a future release
+localhost: starting datanode, logging to /home/chosun/hadoop-2.7.2/logs/hadoop-chosun-datanode-chosun-VirtualBox.out
+localhost: WARNING: An illegal reflective access operation has occurred
+localhost: WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+localhost: WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+localhost: WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+localhost: WARNING: All illegal access operations will be denied in a future release
+Starting secondary namenodes [0.0.0.0]
+0.0.0.0: starting secondarynamenode, logging to /home/chosun/hadoop-2.7.2/logs/hadoop-chosun-secondarynamenode-chosun-VirtualBox.out
+0.0.0.0: WARNING: An illegal reflective access operation has occurred
+0.0.0.0: WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+0.0.0.0: WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+0.0.0.0: WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+0.0.0.0: WARNING: All illegal access operations will be denied in a future release
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+starting yarn daemons
+starting resourcemanager, logging to /home/chosun/hadoop-2.7.2/logs/yarn-chosun-resourcemanager-chosun-VirtualBox.out
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+localhost: starting nodemanager, logging to /home/chosun/hadoop-2.7.2/logs/yarn-chosun-nodemanager-chosun-VirtualBox.out
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ mr-jobhistory-daemon.sh start historyserver
+starting historyserver, logging to /home/chosun/hadoop-2.7.2/logs/mapred-chosun-historyserver-chosun-VirtualBox.out
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ yarn-daemon.sh start proxyserver
+starting proxyserver, logging to /home/chosun/hadoop-2.7.2/logs/yarn-chosun-proxyserver-chosun-VirtualBox.out
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ jps
+22576 WebAppProxyServer
+21552 DataNode
+21795 SecondaryNameNode
+22505 JobHistoryServer
+22329 NodeManager
+21355 NameNode
+21980 ResourceManager
+22622 Jps
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ hdfs dfs -mkdir /user
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ hdfs dfs -mkdir /user/hadoop
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ hdfs dfs -mkdir /user/hadoop/conf
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ hdfs dfs -put etc/hadoop/hadoop-env.sh /user/hadoop/conf/
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/hadoop/conf output
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/05/25 06:07:32 INFO client.RMProxy: Connecting to ResourceManager at localhost/127.0.0.1:8032
+19/05/25 06:07:33 INFO input.FileInputFormat: Total input paths to process : 1
+19/05/25 06:07:33 INFO mapreduce.JobSubmitter: number of splits:1
+19/05/25 06:07:33 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1558731926515_0001
+19/05/25 06:07:33 INFO impl.YarnClientImpl: Submitted application application_1558731926515_0001
+19/05/25 06:07:33 INFO mapreduce.Job: The url to track the job: http://0.0.0.0:8089/proxy/application_1558731926515_0001/
+19/05/25 06:07:33 INFO mapreduce.Job: Running job: job_1558731926515_0001
+19/05/25 06:07:38 INFO mapreduce.Job: Job job_1558731926515_0001 running in uber mode : false
+19/05/25 06:07:38 INFO mapreduce.Job:  map 0% reduce 0%
+19/05/25 06:07:42 INFO mapreduce.Job:  map 100% reduce 0%
+19/05/25 06:07:46 INFO mapreduce.Job:  map 100% reduce 100%
+19/05/25 06:07:46 INFO mapreduce.Job: Job job_1558731926515_0001 completed successfully
+19/05/25 06:07:46 INFO mapreduce.Job: Counters: 49
+	File System Counters
+		FILE: Number of bytes read=4520
+		FILE: Number of bytes written=244151
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=4343
+		HDFS: Number of bytes written=3447
+		HDFS: Number of read operations=6
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+	Job Counters 
+		Launched map tasks=1
+		Launched reduce tasks=1
+		Data-local map tasks=1
+		Total time spent by all maps in occupied slots (ms)=1740
+		Total time spent by all reduces in occupied slots (ms)=1891
+		Total time spent by all map tasks (ms)=1740
+		Total time spent by all reduce tasks (ms)=1891
+		Total vcore-milliseconds taken by all map tasks=1740
+		Total vcore-milliseconds taken by all reduce tasks=1891
+		Total megabyte-milliseconds taken by all map tasks=1781760
+		Total megabyte-milliseconds taken by all reduce tasks=1936384
+	Map-Reduce Framework
+		Map input records=98
+		Map output records=519
+		Map output bytes=6241
+		Map output materialized bytes=4520
+		Input split bytes=117
+		Combine input records=519
+		Combine output records=268
+		Reduce input groups=268
+		Reduce shuffle bytes=4520
+		Reduce input records=268
+		Reduce output records=268
+		Spilled Records=536
+		Shuffled Maps =1
+		Failed Shuffles=0
+		Merged Map outputs=1
+		GC time elapsed (ms)=44
+		CPU time spent (ms)=1180
+		Physical memory (bytes) snapshot=396886016
+		Virtual memory (bytes) snapshot=4244959232
+		Total committed heap usage (bytes)=240123904
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=4226
+	File Output Format Counters 
+		Bytes Written=3447
+chosun@chosun-VirtualBox:~/hadoop2$ 
+chosun@chosun-VirtualBox:~/hadoop2$ hdfs dfs -cat output/part-r-00000 | tail -5
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-2.7.2/share/hadoop/common/lib/hadoop-auth-2.7.2.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+with	2
+work	1
+writing,	1
+written	1
+you	2
+chosun@chosun-VirtualBox:~/hadoop2$ 
+
