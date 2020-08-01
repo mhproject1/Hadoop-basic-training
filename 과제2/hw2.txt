@@ -1,0 +1,154 @@
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ ls
+1987.csv     HomeWorkEX6_1.jar  HomeWorkEX6_5.jar  NOTICE.txt  c++       docs                     hadoop-examples-1.2.1.jar     input.txt  libexec  share
+2007.csv     HomeWorkEX6_2.jar  LICENSE.txt        README.txt  conf      hadoop-ant-1.2.1.jar     hadoop-minicluster-1.2.1.jar  ivy        logs     src
+2008.csv     HomeWorkEX6_3.jar  MyMy.jar           bin         contrib   hadoop-client-1.2.1.jar  hadoop-test-1.2.1.jar         ivy.xml    pids     webapps
+CHANGES.txt  HomeWorkEX6_4.jar  MyMyMy.jar         build.xml   dataexpo  hadoop-core-1.2.1.jar    hadoop-tools-1.2.1.jar        lib        sbin     wordcount_output
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -ls
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Found 8 items
+-rw-r--r--   1 chosun supergroup         15 2019-04-09 22:24 /user/chosun/20154215.txt
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 21:21 /user/chosun/HW_0429
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 21:23 /user/chosun/HW_delay_sort
+drwxr-xr-x   - chosun supergroup          0 2019-04-08 21:44 /user/chosun/MyMY
+-rw-r--r--   1 chosun supergroup  533922063 2019-04-08 21:50 /user/chosun/MyMy
+drwxr-xr-x   - chosun supergroup          0 2019-04-09 21:06 /user/chosun/conf
+drwxr-xr-x   - chosun supergroup          0 2019-04-08 22:13 /user/chosun/delay
+drwxr-xr-x   - chosun supergroup          0 2019-04-09 20:59 /user/chosun/wordcount_output
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -mkdir HW_0430
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -put 2008.csv HW_0430
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -ls HW_0430
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Found 1 items
+-rw-r--r--   1 chosun supergroup  689413044 2019-04-30 01:43 /user/chosun/HW_0430/2008.csv
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_2.jar SequenceFileCreator HW_0430 HW_Sequencefile
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/04/30 01:44:03 WARN mapred.JobClient: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+19/04/30 01:44:04 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+19/04/30 01:44:04 WARN snappy.LoadSnappy: Snappy native library not loaded
+19/04/30 01:44:04 INFO mapred.FileInputFormat: Total input paths to process : 1
+19/04/30 01:44:04 INFO mapred.JobClient: Running job: job_201904300049_0006
+19/04/30 01:44:05 INFO mapred.JobClient:  map 0% reduce 0%
+19/04/30 01:44:15 INFO mapred.JobClient:  map 18% reduce 0%
+19/04/30 01:44:22 INFO mapred.JobClient:  map 27% reduce 0%
+19/04/30 01:44:23 INFO mapred.JobClient:  map 36% reduce 0%
+19/04/30 01:44:30 INFO mapred.JobClient:  map 54% reduce 0%
+19/04/30 01:44:37 INFO mapred.JobClient:  map 63% reduce 0%
+19/04/30 01:44:38 INFO mapred.JobClient:  map 72% reduce 0%
+19/04/30 01:44:44 INFO mapred.JobClient:  map 81% reduce 0%
+19/04/30 01:44:45 INFO mapred.JobClient:  map 90% reduce 0%
+19/04/30 01:44:47 INFO mapred.JobClient: Job complete: job_201904300049_0006
+19/04/30 01:44:47 INFO mapred.JobClient: Counters: 20
+19/04/30 01:44:47 INFO mapred.JobClient:   Map-Reduce Framework
+19/04/30 01:44:47 INFO mapred.JobClient:     Spilled Records=0
+19/04/30 01:44:47 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=22946267136
+19/04/30 01:44:47 INFO mapred.JobClient:     Map input records=7009728
+19/04/30 01:44:47 INFO mapred.JobClient:     SPLIT_RAW_BYTES=1133
+19/04/30 01:44:47 INFO mapred.JobClient:     Map output records=7009728
+19/04/30 01:44:47 INFO mapred.JobClient:     Physical memory (bytes) snapshot=1535180800
+19/04/30 01:44:47 INFO mapred.JobClient:     Map input bytes=689413044
+19/04/30 01:44:47 INFO mapred.JobClient:     CPU time spent (ms)=68370
+19/04/30 01:44:47 INFO mapred.JobClient:     Total committed heap usage (bytes)=738197504
+19/04/30 01:44:47 INFO mapred.JobClient:   File Input Format Counters 
+19/04/30 01:44:47 INFO mapred.JobClient:     Bytes Read=689454004
+19/04/30 01:44:47 INFO mapred.JobClient:   FileSystemCounters
+19/04/30 01:44:47 INFO mapred.JobClient:     HDFS_BYTES_READ=689455137
+19/04/30 01:44:47 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=623613
+19/04/30 01:44:47 INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=188807235
+19/04/30 01:44:47 INFO mapred.JobClient:   File Output Format Counters 
+19/04/30 01:44:47 INFO mapred.JobClient:     Bytes Written=188807235
+19/04/30 01:44:47 INFO mapred.JobClient:   Job Counters 
+19/04/30 01:44:47 INFO mapred.JobClient:     Launched map tasks=11
+19/04/30 01:44:47 INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=0
+19/04/30 01:44:47 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+19/04/30 01:44:47 INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=80348
+19/04/30 01:44:47 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+19/04/30 01:44:47 INFO mapred.JobClient:     Data-local map tasks=11
+MR-Job Result:0
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -ls HW_Sequencefile
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Found 13 items
+-rw-r--r--   1 chosun supergroup          0 2019-04-30 01:44 /user/chosun/HW_Sequencefile/_SUCCESS
+drwxr-xr-x   - chosun supergroup          0 2019-04-30 01:44 /user/chosun/HW_Sequencefile/_logs
+-rw-r--r--   1 chosun supergroup   18795517 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00000
+-rw-r--r--   1 chosun supergroup   19043636 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00001
+-rw-r--r--   1 chosun supergroup   18346427 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00002
+-rw-r--r--   1 chosun supergroup   18560235 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00003
+-rw-r--r--   1 chosun supergroup   18389695 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00004
+-rw-r--r--   1 chosun supergroup   18268623 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00005
+-rw-r--r--   1 chosun supergroup   18389093 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00006
+-rw-r--r--   1 chosun supergroup   18544770 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00007
+-rw-r--r--   1 chosun supergroup   17387259 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00008
+-rw-r--r--   1 chosun supergroup   18226586 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00009
+-rw-r--r--   1 chosun supergroup    4855394 2019-04-30 01:44 /user/chosun/HW_Sequencefile/part-00010
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -text HW_Sequencefile/part-00000 | head -10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/04/30 01:45:47 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+19/04/30 01:45:47 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+19/04/30 01:45:47 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 01:45:47 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 01:45:47 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 01:45:47 INFO compress.CodecPool: Got brand-new decompressor
+810	2008,1,3,4,2003,1955,2211,2225,WN,335,N712SW,128,150,116,-14,8,IAD,TPA,810,4,8,0,,0,NA,NA,NA,NA,NA
+810	2008,1,3,4,754,735,1002,1000,WN,3231,N772SW,128,145,113,2,19,IAD,TPA,810,5,10,0,,0,NA,NA,NA,NA,NA
+515	2008,1,3,4,628,620,804,750,WN,448,N428WN,96,90,76,14,8,IND,BWI,515,3,17,0,,0,NA,NA,NA,NA,NA
+515	2008,1,3,4,926,930,1054,1100,WN,1746,N612SW,88,90,78,-6,-4,IND,BWI,515,3,7,0,,0,NA,NA,NA,NA,NA
+515	2008,1,3,4,1829,1755,1959,1925,WN,3920,N464WN,90,90,77,34,34,IND,BWI,515,3,10,0,,0,2,0,0,0,32
+688	2008,1,3,4,1940,1915,2121,2110,WN,378,N726SW,101,115,87,11,25,IND,JAX,688,4,10,0,,0,NA,NA,NA,NA,NA
+1591	2008,1,3,4,1937,1830,2037,1940,WN,509,N763SW,240,250,230,57,67,IND,LAS,1591,3,7,0,,0,10,0,0,0,47
+1591	2008,1,3,4,1039,1040,1132,1150,WN,535,N428WN,233,250,219,-18,-1,IND,LAS,1591,7,7,0,,0,NA,NA,NA,NA,NA
+451	2008,1,3,4,617,615,652,650,WN,11,N689SW,95,95,70,2,2,IND,MCI,451,6,19,0,,0,NA,NA,NA,NA,NA
+451	2008,1,3,4,1620,1620,1639,1655,WN,810,N648SW,79,95,70,-16,0,IND,MCI,451,3,6,0,,0,NA,NA,NA,NA,NA
+text: Unable to write to output stream.
+(arg: 3) ^C
+chosun@chosun-VirtualBox:~/hadoop$ 
+

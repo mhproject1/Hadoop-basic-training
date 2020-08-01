@@ -1,0 +1,146 @@
+chosun@chosun-VirtualBox:~/hadoop$ ls
+1987.csv     HomeWorkEX6_1.jar  LICENSE.txt  NOTICE.txt  build.xml  contrib   hadoop-ant-1.2.1.jar     hadoop-examples-1.2.1.jar     hadoop-tools-1.2.1.jar  ivy.xml  logs  share    wordcount_output
+2007.csv     HomeWorkEX6_2.jar  MyMy.jar     README.txt  c++        dataexpo  hadoop-client-1.2.1.jar  hadoop-minicluster-1.2.1.jar  input.txt               lib      pids  src
+CHANGES.txt  HomeWorkEX6_3.jar  MyMyMy.jar   bin         conf       docs      hadoop-core-1.2.1.jar    hadoop-test-1.2.1.jar         ivy                     libexec  sbin  webapps
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ ls
+1987.csv           HomeWorkEX6_2.jar  MyMy.jar    bin        contrib               hadoop-client-1.2.1.jar       hadoop-test-1.2.1.jar   ivy.xml  pids   webapps
+2007.csv           HomeWorkEX6_3.jar  MyMyMy.jar  build.xml  dataexpo              hadoop-core-1.2.1.jar         hadoop-tools-1.2.1.jar  lib      sbin   wordcount_output
+CHANGES.txt        HomeWorkEX6_4.jar  NOTICE.txt  c++        docs                  hadoop-examples-1.2.1.jar     input.txt               libexec  share
+HomeWorkEX6_1.jar  LICENSE.txt        README.txt  conf       hadoop-ant-1.2.1.jar  hadoop-minicluster-1.2.1.jar  ivy                     logs     src
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_4.jar SearchValueList HW_Sequencefile 100
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Exception in thread "main" java.io.FileNotFoundException: File does not exist: hdfs://localhost:9000/user/chosun/HW_Sequencefile/_SUCCESS/data
+	at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:558)
+	at org.apache.hadoop.fs.FileSystem.getLength(FileSystem.java:816)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1479)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1474)
+	at org.apache.hadoop.io.MapFile$Reader.createDataFileReader(MapFile.java:302)
+	at org.apache.hadoop.io.MapFile$Reader.open(MapFile.java:284)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:273)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:260)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:253)
+	at org.apache.hadoop.mapred.MapFileOutputFormat.getReaders(MapFileOutputFormat.java:93)
+	at SearchValueList.run(SearchValueList.java:29)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:65)
+	at SearchValueList.main(SearchValueList.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:160)
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -rmr HW_Sequencefile/_*
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Deleted hdfs://localhost:9000/user/chosun/HW_Sequencefile/_SUCCESS
+Deleted hdfs://localhost:9000/user/chosun/HW_Sequencefile/_logs
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_4.jar SearchValueList HW_Sequencefile 100 | head -10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Exception in thread "main" java.io.FileNotFoundException: File does not exist: hdfs://localhost:9000/user/chosun/HW_Sequencefile/part-00000/data
+	at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:558)
+	at org.apache.hadoop.fs.FileSystem.getLength(FileSystem.java:816)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1479)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1474)
+	at org.apache.hadoop.io.MapFile$Reader.createDataFileReader(MapFile.java:302)
+	at org.apache.hadoop.io.MapFile$Reader.open(MapFile.java:284)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:273)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:260)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:253)
+	at org.apache.hadoop.mapred.MapFileOutputFormat.getReaders(MapFileOutputFormat.java:93)
+	at SearchValueList.run(SearchValueList.java:29)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:65)
+	at SearchValueList.main(SearchValueList.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:160)
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -ls
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Found 11 items
+-rw-r--r--   1 chosun supergroup         15 2019-04-09 22:24 /user/chosun/20154215.txt
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 21:21 /user/chosun/HW_0429
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 22:45 /user/chosun/HW_0429_2
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 23:08 /user/chosun/HW_Mapfile
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 23:32 /user/chosun/HW_Sequencefile
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 21:23 /user/chosun/HW_delay_sort
+drwxr-xr-x   - chosun supergroup          0 2019-04-08 21:44 /user/chosun/MyMY
+-rw-r--r--   1 chosun supergroup  533922063 2019-04-08 21:50 /user/chosun/MyMy
+drwxr-xr-x   - chosun supergroup          0 2019-04-09 21:06 /user/chosun/conf
+drwxr-xr-x   - chosun supergroup          0 2019-04-08 22:13 /user/chosun/delay
+drwxr-xr-x   - chosun supergroup          0 2019-04-09 20:59 /user/chosun/wordcount_output
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_4.jar SearchValueList HW_Mapfile 100 | head -10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Exception in thread "main" java.io.FileNotFoundException: File does not exist: hdfs://localhost:9000/user/chosun/HW_Mapfile/_SUCCESS/data
+	at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:558)
+	at org.apache.hadoop.fs.FileSystem.getLength(FileSystem.java:816)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1479)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1474)
+	at org.apache.hadoop.io.MapFile$Reader.createDataFileReader(MapFile.java:302)
+	at org.apache.hadoop.io.MapFile$Reader.open(MapFile.java:284)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:273)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:260)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:253)
+	at org.apache.hadoop.mapred.MapFileOutputFormat.getReaders(MapFileOutputFormat.java:93)
+	at SearchValueList.run(SearchValueList.java:29)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:65)
+	at SearchValueList.main(SearchValueList.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:160)
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -rmr HW_Mapfile/_*
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Deleted hdfs://localhost:9000/user/chosun/HW_Mapfile/_SUCCESS
+Deleted hdfs://localhost:9000/user/chosun/HW_Mapfile/_logs
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_4.jar SearchValueList HW_Mapfile 100 | head -10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/04/29 23:34:23 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+19/04/29 23:34:23 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:34:23 INFO compress.CodecPool: Got brand-new decompressor
+2007,1,16,2,1934,1940,2015,2017,HA,556,N476HA,41,37,23,-2,-6,HNL,OGG,100,5,13,0,,0,0,0,0,0,0
+2007,1,17,3,1937,1940,2014,2017,HA,556,N480HA,37,37,23,-3,-3,HNL,OGG,100,5,9,0,,0,0,0,0,0,0
+2007,1,21,7,756,800,830,837,HA,116,N479HA,34,37,21,-7,-4,HNL,OGG,100,6,7,0,,0,0,0,0,0,0
+2007,1,20,6,758,800,833,837,HA,116,N477HA,35,37,21,-4,-2,HNL,OGG,100,6,8,0,,0,0,0,0,0,0
+2007,1,18,4,1935,1940,2013,2017,HA,556,N484HA,38,37,21,-4,-5,HNL,OGG,100,8,9,0,,0,0,0,0,0,0
+2007,1,19,5,1933,1940,2009,2017,HA,556,N476HA,36,37,20,-8,-7,HNL,OGG,100,6,10,0,,0,0,0,0,0,0
+2007,1,20,6,1936,1940,2014,2017,HA,556,N481HA,38,37,21,-3,-4,HNL,OGG,100,6,11,0,,0,0,0,0,0,0
+2007,1,21,7,1939,1940,2017,2017,HA,556,N484HA,38,37,21,0,-1,HNL,OGG,100,5,12,0,,0,0,0,0,0,0
+2007,1,22,1,1938,1940,2011,2017,HA,556,N487HA,33,37,19,-6,-2,HNL,OGG,100,6,8,0,,0,0,0,0,0,0
+2007,1,23,2,1933,1940,2008,2017,HA,556,N487HA,35,37,22,-9,-7,HNL,OGG,100,4,9,0,,0,0,0,0,0,0
+

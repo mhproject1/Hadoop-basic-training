@@ -1,0 +1,76 @@
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ ls
+1987.csv     HomeWorkEX6_1.jar  HomeWorkEX6_5.jar  NOTICE.txt  c++       docs                     hadoop-examples-1.2.1.jar     input.txt  libexec  share
+2007.csv     HomeWorkEX6_2.jar  LICENSE.txt        README.txt  conf      hadoop-ant-1.2.1.jar     hadoop-minicluster-1.2.1.jar  ivy        logs     src
+2008.csv     HomeWorkEX6_3.jar  MyMy.jar           bin         contrib   hadoop-client-1.2.1.jar  hadoop-test-1.2.1.jar         ivy.xml    pids     webapps
+CHANGES.txt  HomeWorkEX6_4.jar  MyMyMy.jar         build.xml   dataexpo  hadoop-core-1.2.1.jar    hadoop-tools-1.2.1.jar        lib        sbin     wordcount_output
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_4.jar SearchValueList HW_Mapfile 100
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Exception in thread "main" java.io.FileNotFoundException: File does not exist: hdfs://localhost:9000/user/chosun/HW_Mapfile/_SUCCESS/data
+	at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:558)
+	at org.apache.hadoop.fs.FileSystem.getLength(FileSystem.java:816)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1479)
+	at org.apache.hadoop.io.SequenceFile$Reader.<init>(SequenceFile.java:1474)
+	at org.apache.hadoop.io.MapFile$Reader.createDataFileReader(MapFile.java:302)
+	at org.apache.hadoop.io.MapFile$Reader.open(MapFile.java:284)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:273)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:260)
+	at org.apache.hadoop.io.MapFile$Reader.<init>(MapFile.java:253)
+	at org.apache.hadoop.mapred.MapFileOutputFormat.getReaders(MapFileOutputFormat.java:93)
+	at SearchValueList.run(SearchValueList.java:29)
+	at org.apache.hadoop.util.ToolRunner.run(ToolRunner.java:65)
+	at SearchValueList.main(SearchValueList.java:20)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:160)
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -rmr HW_Mapfile/_*
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Deleted hdfs://localhost:9000/user/chosun/HW_Mapfile/_SUCCESS
+Deleted hdfs://localhost:9000/user/chosun/HW_Mapfile/_logs
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_4.jar SearchValueList HW_Mapfile 100 | head -10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/04/30 02:22:34 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+19/04/30 02:22:34 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+19/04/30 02:22:34 INFO compress.CodecPool: Got brand-new decompressor
+2008,1,29,2,1735,1740,1807,1814,HA,545,N477HA,32,34,22,-7,-5,OGG,HNL,100,5,5,0,,0,NA,NA,NA,NA,NA
+2008,1,30,3,1740,1740,1815,1814,HA,545,N477HA,35,34,22,1,0,OGG,HNL,100,7,6,0,,0,NA,NA,NA,NA,NA
+2008,1,31,4,1737,1740,1809,1814,HA,545,N484HA,32,34,22,-5,-3,OGG,HNL,100,5,5,0,,0,NA,NA,NA,NA,NA
+2008,1,1,2,1629,1635,1705,1712,HA,546,N479HA,36,37,22,-7,-6,HNL,OGG,100,5,9,0,,0,NA,NA,NA,NA,NA
+2008,1,2,3,1630,1635,1709,1712,HA,546,N481HA,39,37,24,-3,-5,HNL,OGG,100,4,11,0,,0,NA,NA,NA,NA,NA
+2008,1,3,4,1629,1635,1708,1712,HA,546,N481HA,39,37,24,-4,-6,HNL,OGG,100,5,10,0,,0,NA,NA,NA,NA,NA
+2008,1,4,5,1632,1635,1710,1712,HA,546,N487HA,38,37,23,-2,-3,HNL,OGG,100,7,8,0,,0,NA,NA,NA,NA,NA
+2008,1,5,6,1627,1635,1701,1712,HA,546,N484HA,34,37,22,-11,-8,HNL,OGG,100,5,7,0,,0,NA,NA,NA,NA,NA
+2008,1,6,7,1632,1635,1706,1712,HA,546,N479HA,34,37,20,-6,-3,HNL,OGG,100,6,8,0,,0,NA,NA,NA,NA,NA
+2008,1,7,1,1630,1635,1705,1712,HA,546,N479HA,35,37,21,-7,-5,HNL,OGG,100,5,9,0,,0,NA,NA,NA,NA,NA
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+chosun@chosun-VirtualBox:~/hadoop$ 
+

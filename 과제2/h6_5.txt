@@ -1,0 +1,142 @@
+chosun@chosun-VirtualBox:~/hadoop$ ls
+1987.csv           HomeWorkEX6_2.jar  LICENSE.txt  README.txt  conf      hadoop-ant-1.2.1.jar       hadoop-minicluster-1.2.1.jar  ivy      logs   src
+2007.csv           HomeWorkEX6_3.jar  MyMy.jar     bin         contrib   hadoop-client-1.2.1.jar    hadoop-test-1.2.1.jar         ivy.xml  pids   webapps
+CHANGES.txt        HomeWorkEX6_4.jar  MyMyMy.jar   build.xml   dataexpo  hadoop-core-1.2.1.jar      hadoop-tools-1.2.1.jar        lib      sbin   wordcount_output
+HomeWorkEX6_1.jar  HomeWorkEX6_5.jar  NOTICE.txt   c++         docs      hadoop-examples-1.2.1.jar  input.txt                     libexec  share
+chosun@chosun-VirtualBox:~/hadoop$ hadoop jar HomeWorkEX6_5.jar SequenceFileTotalSort HW_Sequencefile HW_total
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/04/29 23:41:16 INFO mapred.FileInputFormat: Total input paths to process : 11
+19/04/29 23:41:16 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+19/04/29 23:41:16 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+19/04/29 23:41:16 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:41:16 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:41:16 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:41:16 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:41:20 INFO lib.InputSampler: Using 1000 samples
+19/04/29 23:41:20 INFO compress.CodecPool: Got brand-new compressor
+19/04/29 23:41:21 INFO mapred.FileInputFormat: Total input paths to process : 11
+19/04/29 23:41:21 INFO mapred.JobClient: Running job: job_201904292119_0010
+19/04/29 23:41:22 INFO mapred.JobClient:  map 0% reduce 0%
+19/04/29 23:41:30 INFO mapred.JobClient:  map 18% reduce 0%
+19/04/29 23:41:35 INFO mapred.JobClient:  map 36% reduce 0%
+19/04/29 23:41:39 INFO mapred.JobClient:  map 36% reduce 3%
+19/04/29 23:41:42 INFO mapred.JobClient:  map 36% reduce 12%
+19/04/29 23:41:43 INFO mapred.JobClient:  map 54% reduce 12%
+19/04/29 23:41:49 INFO mapred.JobClient:  map 72% reduce 12%
+19/04/29 23:41:51 INFO mapred.JobClient:  map 72% reduce 18%
+19/04/29 23:41:54 INFO mapred.JobClient:  map 90% reduce 18%
+19/04/29 23:41:57 INFO mapred.JobClient:  map 90% reduce 27%
+19/04/29 23:41:58 INFO mapred.JobClient:  map 100% reduce 27%
+19/04/29 23:42:00 INFO mapred.JobClient:  map 100% reduce 30%
+19/04/29 23:42:03 INFO mapred.JobClient:  map 100% reduce 66%
+19/04/29 23:42:06 INFO mapred.JobClient:  map 100% reduce 69%
+19/04/29 23:42:09 INFO mapred.JobClient:  map 100% reduce 71%
+19/04/29 23:42:12 INFO mapred.JobClient:  map 100% reduce 74%
+19/04/29 23:42:15 INFO mapred.JobClient:  map 100% reduce 76%
+19/04/29 23:42:18 INFO mapred.JobClient:  map 100% reduce 79%
+19/04/29 23:42:21 INFO mapred.JobClient:  map 100% reduce 81%
+19/04/29 23:42:24 INFO mapred.JobClient:  map 100% reduce 84%
+19/04/29 23:42:27 INFO mapred.JobClient:  map 100% reduce 86%
+19/04/29 23:42:30 INFO mapred.JobClient:  map 100% reduce 89%
+19/04/29 23:42:33 INFO mapred.JobClient:  map 100% reduce 91%
+19/04/29 23:42:36 INFO mapred.JobClient:  map 100% reduce 93%
+19/04/29 23:42:39 INFO mapred.JobClient:  map 100% reduce 96%
+19/04/29 23:42:42 INFO mapred.JobClient:  map 100% reduce 98%
+19/04/29 23:42:45 INFO mapred.JobClient:  map 100% reduce 100%
+19/04/29 23:42:46 INFO mapred.JobClient: Job complete: job_201904292119_0010
+19/04/29 23:42:46 INFO mapred.JobClient: Counters: 30
+19/04/29 23:42:46 INFO mapred.JobClient:   Map-Reduce Framework
+19/04/29 23:42:46 INFO mapred.JobClient:     Spilled Records=22026882
+19/04/29 23:42:46 INFO mapred.JobClient:     Map output materialized bytes=747597249
+19/04/29 23:42:46 INFO mapred.JobClient:     Reduce input records=7453215
+19/04/29 23:42:46 INFO mapred.JobClient:     Virtual memory (bytes) snapshot=25064427520
+19/04/29 23:42:46 INFO mapred.JobClient:     Map input records=7453215
+19/04/29 23:42:46 INFO mapred.JobClient:     SPLIT_RAW_BYTES=1243
+19/04/29 23:42:46 INFO mapred.JobClient:     Map output bytes=732690753
+19/04/29 23:42:46 INFO mapred.JobClient:     Reduce shuffle bytes=747597249
+19/04/29 23:42:46 INFO mapred.JobClient:     Physical memory (bytes) snapshot=2582048768
+19/04/29 23:42:46 INFO mapred.JobClient:     Map input bytes=198538759
+19/04/29 23:42:46 INFO mapred.JobClient:     Reduce input groups=1438
+19/04/29 23:42:46 INFO mapred.JobClient:     Combine output records=0
+19/04/29 23:42:46 INFO mapred.JobClient:     Reduce output records=7453215
+19/04/29 23:42:46 INFO mapred.JobClient:     Map output records=7453215
+19/04/29 23:42:46 INFO mapred.JobClient:     Combine input records=0
+19/04/29 23:42:46 INFO mapred.JobClient:     CPU time spent (ms)=88010
+19/04/29 23:42:46 INFO mapred.JobClient:     Total committed heap usage (bytes)=1947205632
+19/04/29 23:42:46 INFO mapred.JobClient:   File Input Format Counters 
+19/04/29 23:42:46 INFO mapred.JobClient:     Bytes Read=198540134
+19/04/29 23:42:46 INFO mapred.JobClient:   FileSystemCounters
+19/04/29 23:42:46 INFO mapred.JobClient:     HDFS_BYTES_READ=198542873
+19/04/29 23:42:46 INFO mapred.JobClient:     FILE_BYTES_WRITTEN=2209709482
+19/04/29 23:42:46 INFO mapred.JobClient:     FILE_BYTES_READ=1461408791
+19/04/29 23:42:46 INFO mapred.JobClient:     HDFS_BYTES_WRITTEN=168935190
+19/04/29 23:42:46 INFO mapred.JobClient:   File Output Format Counters 
+19/04/29 23:42:46 INFO mapred.JobClient:     Bytes Written=168935190
+19/04/29 23:42:46 INFO mapred.JobClient:   Job Counters 
+19/04/29 23:42:46 INFO mapred.JobClient:     Launched map tasks=11
+19/04/29 23:42:46 INFO mapred.JobClient:     Launched reduce tasks=1
+19/04/29 23:42:46 INFO mapred.JobClient:     SLOTS_MILLIS_REDUCES=75658
+19/04/29 23:42:46 INFO mapred.JobClient:     Total time spent by all reduces waiting after reserving slots (ms)=0
+19/04/29 23:42:46 INFO mapred.JobClient:     SLOTS_MILLIS_MAPS=64847
+19/04/29 23:42:46 INFO mapred.JobClient:     Total time spent by all maps waiting after reserving slots (ms)=0
+19/04/29 23:42:46 INFO mapred.JobClient:     Data-local map tasks=11
+MR-Job Result:0
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -ls HW_total
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Found 3 items
+-rw-r--r--   1 chosun supergroup          0 2019-04-29 23:42 /user/chosun/HW_total/_SUCCESS
+drwxr-xr-x   - chosun supergroup          0 2019-04-29 23:41 /user/chosun/HW_total/_logs
+-rw-r--r--   1 chosun supergroup  168935190 2019-04-29 23:42 /user/chosun/HW_total/part-00000
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -text /user/hadoop/HW_total/part-00000 | head -10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+text: File does not exist: /user/hadoop/HW_total/part-00000
+chosun@chosun-VirtualBox:~/hadoop$ hadoop fs -text HW_total/part-00000 | head -10
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/chosun/hadoop-1.2.1/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/04/29 23:44:13 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+19/04/29 23:44:13 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+19/04/29 23:44:13 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:44:13 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:44:13 INFO compress.CodecPool: Got brand-new decompressor
+19/04/29 23:44:13 INFO compress.CodecPool: Got brand-new decompressor
+11	2007,12,18,2,1118,1040,1230,1140,OH,5512,N597SW,72,60,21,50,38,JFK,LGA,11,5,46,0,,0,38,0,12,0,0
+11	2007,6,6,3,2215,2215,2258,2245,CO,361,N17233,43,30,15,13,0,SFO,OAK,11,14,14,0,,0,0,0,0,0,0
+11	2007,7,31,2,1050,1010,1137,1110,OH,5120,N931CA,47,60,16,27,40,JFK,LGA,11,5,26,0,,0,27,0,0,0,0
+11	2007,3,7,3,1112,955,1254,1055,OH,5120,N973CA,102,60,20,119,77,JFK,LGA,11,9,73,0,,0,77,0,42,0,0
+11	2007,3,13,2,1430,1410,1558,1510,OH,5694,N590SW,88,60,23,48,20,JFK,LGA,11,8,57,0,,0,0,20,28,0,0
+11	2007,1,26,5,1120,857,1155,957,OH,5425,N675BR,35,60,11,118,143,JFK,LGA,11,5,19,0,,0,118,0,0,0,0
+11	2007,11,8,4,2040,1935,2215,2035,OH,5308,N592SW,95,60,9,100,65,JFK,LGA,11,10,76,0,,0,65,0,35,0,0
+18	2007,11,19,1,NA,645,NA,943,OO,3765,0,NA,118,NA,NA,NA,BUR,LAX,18,0,0,1,B,0,0,0,0,0,0
+21	2007,5,23,3,NA,1610,NA,1640,AA,2121,0,NA,30,NA,NA,NA,MIA,FLL,21,0,0,1,A,0,0,0,0,0,0
+21	2007,7,5,4,1601,1601,1636,1636,US,1651,N419US,35,35,18,0,0,FLL,MIA,21,9,8,0,,0,0,0,0,0,0
+text: Unable to write to output stream.
+chosun@chosun-VirtualBox:~/hadoop$ stop-all.sh
+stopping jobtracker
+chosun@localhost's password: 
+localhost: stopping tasktracker
+stopping namenode
+chosun@localhost's password: 
+localhost: stopping datanode
+chosun@localhost's password: 
+localhost: stopping secondarynamenode
+chosun@chosun-VirtualBox:~/hadoop$ jps
+1857 org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar
+22602 Jps
+chosun@chosun-VirtualBox:~/hadoop$ 
+
+
